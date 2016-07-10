@@ -8,12 +8,16 @@
         </div>
 
     {% for post in posts %}
+        {% if post != None %}
         <div>
             <h1><a href="">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
             <p>Publicado em: {{ post.published_date }}</p>
             <br>
         </div>
+        {% else %}
+            {{ 'Nenhum post encontrado.' }}
+        {% endif %}
     {% endfor %}
 
     </body>
