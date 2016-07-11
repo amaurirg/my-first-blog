@@ -1,25 +1,12 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Aprendendo Django com o Tutorial Django Girls</a></h1>
-        </div>
-
+{% extends 'blog/base.html' %}
+{% block content %}
     {% for post in posts %}
-        {{post}}
-        {% if post != None %}
-        <div>
-            <h1><a href="">{{ post.title }}</a></h1>
+        <div class="post">
+            <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
-            <p>Publicado em: {{ post.published_date }}</p>
-            <br>
+            <div class="date">
+                <p>Publicado em: {{ post.published_date }}</p>
+            </div>
         </div>
-        {% else %}
-            {{ 'Nenhum post encontrado.' }}
-        {% endif %}
     {% endfor %}
-    <p>Teste</p>
-    </body>
-</html>
+{% endblock content %}
